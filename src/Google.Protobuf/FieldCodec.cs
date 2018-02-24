@@ -365,8 +365,10 @@ namespace Google.Protobuf
             // Otherwise it's the default value of the CLR type
         }
 
-        internal static bool IsPackedRepeatedField(uint tag) =>
-            TypeSupportsPacking && WireFormat.GetTagWireType(tag) == WireFormat.WireType.LengthDelimited;
+        internal static bool IsPackedRepeatedField(uint tag)
+        {
+            return TypeSupportsPacking && WireFormat.GetTagWireType(tag) == WireFormat.WireType.LengthDelimited;
+        }
 
         internal bool PackedRepeatedField { get; }
 
@@ -463,14 +465,23 @@ namespace Google.Protobuf
         /// </summary>
         /// <param name="input">The input stream to read from.</param>
         /// <returns>The value read from the stream.</returns>
-        public T Read(CodedInputStream input) => ValueReader(input);
+        public T Read(CodedInputStream input)
+        {
+            return ValueReader(input);
+        }
 
         /// <summary>
         /// Calculates the size required to write the given value, with a tag,
         /// if the value is not the default.
         /// </summary>
-        public int CalculateSizeWithTag(T value) => IsDefault(value) ? 0 : ValueSizeCalculator(value) + tagSize;
+        public int CalculateSizeWithTag(T value)
+        {
+            return IsDefault(value) ? 0 : ValueSizeCalculator(value) + tagSize;
+        }
 
-        private bool IsDefault(T value) => EqualityComparer.Equals(value, DefaultValue);
+        private bool IsDefault(T value)
+        {
+            return EqualityComparer.Equals(value, DefaultValue);
+        }
     }
 }

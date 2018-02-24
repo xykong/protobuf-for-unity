@@ -157,7 +157,7 @@ namespace Google.Protobuf
         /// <returns>A ByteString with content read from the given stream.</returns>
         public static ByteString FromStream(Stream stream)
         {
-            ProtoPreconditions.CheckNotNull(stream, nameof(stream));
+            ProtoPreconditions.CheckNotNull(stream, "stream");
             int capacity = stream.CanSeek ? checked((int) (stream.Length - stream.Position)) : 0;
             var memoryStream = new MemoryStream(capacity);
             stream.CopyTo(memoryStream);
@@ -181,7 +181,7 @@ namespace Google.Protobuf
         /// <returns>A ByteString with content read from the given stream.</returns>
         public async static Task<ByteString> FromStreamAsync(Stream stream, CancellationToken cancellationToken = default(CancellationToken))
         {
-            ProtoPreconditions.CheckNotNull(stream, nameof(stream));
+            ProtoPreconditions.CheckNotNull(stream, "stream");
             int capacity = stream.CanSeek ? checked((int) (stream.Length - stream.Position)) : 0;
             var memoryStream = new MemoryStream(capacity);
             // We have to specify the buffer size here, as there's no overload accepting the cancellation token

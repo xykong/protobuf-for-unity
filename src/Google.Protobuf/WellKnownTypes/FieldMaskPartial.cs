@@ -79,7 +79,8 @@ namespace Google.Protobuf.WellKnownTypes
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Invalid field mask to be converted to JSON: {firstInvalid}");
+                    throw new InvalidOperationException(string.Format("Invalid field mask to be converted to JSON: {0}",
+                        firstInvalid));
                 }
             }
         }

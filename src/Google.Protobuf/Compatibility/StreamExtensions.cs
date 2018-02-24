@@ -52,7 +52,7 @@ namespace Google.Protobuf.Compatibility
         {
             if (destination == null)
             {
-                throw new ArgumentNullException(nameof(destination));
+                throw new ArgumentNullException("destination");
             }
 
             byte[] buffer = new byte[BUFFER_SIZE];

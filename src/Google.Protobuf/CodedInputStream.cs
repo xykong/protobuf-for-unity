@@ -462,7 +462,8 @@ namespace Google.Protobuf
             if (startField != endField)
             {
                 throw new InvalidProtocolBufferException(
-                    $"Mismatched end-group tag. Started with field {startField}; ended with field {endField}");
+                    string.Format("Mismatched end-group tag. Started with field {0}; ended with field {1}", startField,
+                        endField));
             }
             recursionDepth--;
         }
